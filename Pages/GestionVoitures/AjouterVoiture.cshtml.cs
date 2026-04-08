@@ -10,7 +10,7 @@ namespace GestionReservations.Pages.GestionVoitures
         private readonly VoitureService _voitureService;
 
         [BindProperty]
-        public Voiture voiture { get; set; }
+        public Voiture Voiture { get; set; }
 
         public AjouterVoitureModel()
         {
@@ -25,8 +25,17 @@ namespace GestionReservations.Pages.GestionVoitures
         {
             if (!ModelState.IsValid)
                 return Page();
+            
+            // Validation anneeFabrication
+            int anneeMax = DateTime.Now.Year;
+            if (Voiture.AnneeFabrication < anneeMax - 10)
+            {
+                ModelState.AddModelError("Voiture.AnneeFabrication",
+                    "La voiture ne doit pas avoir plus de 10 ans.");
+                return Page();
+            }
 
-            _voitureService.AjouterVoiture(voiture.Description, voiture.PrixJournalier, voiture.Marque, voiture.AnneeFabrication);
+            _voitureService.AjouterVoiture(Voiture.Description, Voiture.PrixJournalier, Voiture.Marque, Voiture.AnneeFabrication);
 
             return RedirectToPage("/GestionVoitures/Index");
         }

@@ -1,2 +1,2 @@
 1;chambre de trois lits;150;Badira
-2;chambre de trois lits;150;Badira
+2;chambre de trois lits;150;Badira1

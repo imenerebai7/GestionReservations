@@ -13,9 +13,7 @@ namespace GestionReservations.Services
             ChargerDepuisFichier();
         }
 
-        // --- CRUD ---
-
-        public  void AjouterChambre(string description, int prix, string nomhotel)
+        public void AjouterChambre(string description, int prix, string nomhotel)
         {
             Chambre chambre = new Chambre(description, prix, nomhotel);
             chambre.Id = GetNextId();
@@ -53,8 +51,6 @@ namespace GestionReservations.Services
         {
             return new List<Chambre>(_chambres);
         }
-
-        // --- Gestion fichier ---
 
         private int GetNextId()
         {

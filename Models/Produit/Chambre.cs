@@ -4,10 +4,10 @@
     {
         // Propriété
         public string NomHotel { get; set; }
+        // Constructeurs
         public Chambre()
         {
         }
-        // Constructeur
         public Chambre(string description, int prix, string nomHotel) 
         {
             Description = description;

@@ -49,7 +49,7 @@ namespace GestionReservations.Services
             }
         }
 
-        public Voiture? ObtenirVoitureParId(int id)
+        public Voiture ObtenirVoitureParId(int id)
         {
             return _voitures.FirstOrDefault(v => v.Id == id);
         }
