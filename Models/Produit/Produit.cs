@@ -1,10 +1,15 @@
-﻿namespace GestionReservations.Models.Produit
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GestionReservations.Models.Produit
 {
     public abstract class Produit
     {
         // Propriétés
         public int Id { get; set; }
+        [StringLength(500, ErrorMessage = "Maximum 500 caractères")]
+        [Required]
         public string Description { get; set; }
-        public decimal PrixJournalier { get; set; }
+        [Range(0, 500, ErrorMessage = "Le prix doit être entre 0 et 500")]
+        public int PrixJournalier { get; set; }
     }
 }

@@ -1,0 +1,40 @@
+﻿@page
+@model GestionReservations.Pages.GestionVoitures.AjouterVoitureModel
+@{
+}
+<h1>Ajouter un véhicule</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="voiture.Description" class="control-label">Description</label>
+                <input asp-for="voiture.Description" class="form-control" />
+                <span asp-validation-for="voiture.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="voiture.PrixJournalier" class="control-label">Prix</label>
+                <input asp-for="voiture.PrixJournalier" class="form-control" />
+                <span asp-validation-for="voiture.PrixJournalier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="voiture.Marque" class="control-label">Marque</label>
+                <input asp-for="voiture.Marque" class="form-control" />
+                <span asp-validation-for="voiture.Marque" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="voiture.AnneeFabrication" class="control-label">Année de fabrication</label>
+                <input asp-for="voiture.AnneeFabrication" class="form-control" />
+                <span asp-validation-for="voiture.AnneeFabrication" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,33 @@
+﻿@page
+@model GestionReservations.Pages.GestionVoitures.IndexModel
+@{
+    ViewData["Title"] = "Gestion des Voitures";
+}
+<h1>Liste des Voitures</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Identifiant</th>
+            <th>Marque</th>
+            <th>Prix</th>
+            <th>Description</th>
+            <th>Année</th>
+        </tr>
+    </thead>
+    @foreach (var Voitures in Model.Voitures)
+    {
+        <tr>
+            <td>@Voitures.Id</td>
+            <td>@Voitures.PrixJournalier</td>
+            <td>@Voitures.Description</td>
+            <td>@Voitures.Marque</td>
+
+            <td>@Voitures.AnneeFabrication</td>
+            <td> <a asp-page="./ModifierVoiture" asp-route-Id="@Voitures.Id">Modifier</a></td>
+            <td><a asp-page="./ConsulterVoiture" asp-route-Id="@Voitures.Id">Consulter</a></td>
+            <td><a asp-page="./SupprimerVoiture" asp-route-Id="@Voitures.Id">Supprimer</a></td>
+        </tr>
+    }
+</table>
+<a class="btn btn-secondary" asp-page="./AjouterVoiture">Ajouter une voiture</a>

@@ -1,0 +1,19 @@
+﻿@page
+@model GestionReservations.Pages.GestionChambres.SupprimerChambreModel
+@{
+}
+<h2>Confirmer la suppression</h2>
+
+<p>voulez-vous supprimer cette chambre?</p>
+
+<ul>
+    <li>ID: @Model.Chambre.Id</li>
+    <li>Description: @Model.Chambre.Description</li>
+    <li>Prix: @Model.Chambre.PrixJournalier</li>
+</ul>
+
+<form method="post">
+    <input type="hidden" asp-for="Chambre.Id" />
+    <button type="submit" class="btn btn-outline-danger ">supprimer</button>
+    <a asp-page="/Hotel" class="btn btn-secondary">Annuler</a>
+</form>

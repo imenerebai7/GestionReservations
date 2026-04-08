@@ -4,10 +4,10 @@ namespace GestionReservations.Interfaces
 {
     public interface IGestionChambre
     {
-        void AjouterChambre(Chambre chambre);
-        void ModifierChambre(Chambre chambre);
-        void SupprimerChambre(int id);
-        Chambre? ObtenirChambreParId(int id);
-        List<Chambre> ObtenirTousChambres();
+        public void AjouterChambre(string description, int prix, string nomhotel);
+        public void SupprimerChambre(Chambre chambre);
+        public void ModifierChambre(Chambre chambre);
+        public Chambre? ObtenirChambreParId(int id);
+        public List<Chambre> ObtenirToutesChambres();
     }
 }

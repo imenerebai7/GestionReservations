@@ -1,0 +1,22 @@
+﻿@page
+@model GestionReservations.Pages.GestionVoitures.SupprimerVoitureModel
+@{
+}
+<h2>Confirmer la suppression</h2>
+
+<p>Voulez-vous supprimer ce Véhicule</p>
+
+<ul>
+    <li>ID de la voiture: @Model.Voiture.Id</li>
+    <li>Description de la voiture : @Model.Voiture.Description</li>
+    <li>Prix de la voiture : @Model.Voiture.PrixJournalier</li>
+    <li>Marque de la voiture : @Model.Voiture.Marque</li>
+
+    <li>Année de fabrication: @Model.Voiture.AnneeFabrication</li>
+</ul>
+
+<form method="post">
+    <input type="hidden" asp-for="Voiture.Id" />
+    <button type="submit" class="btn btn-outline-danger ">supprimer</button>
+    <a asp-page="/Voitures/Voitures" class="btn btn-secondary">Annuler</a>
+</form>

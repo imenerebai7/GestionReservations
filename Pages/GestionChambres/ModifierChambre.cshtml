@@ -1,0 +1,36 @@
+﻿@page
+@model GestionReservations.Pages.GestionChambres.ModifierChambreModel
+@{
+}
+<h1>Modifier une chambre</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Chambre.Id" />
+                <label asp-for="Chambre.Description" class="control-label"></label>
+                <input asp-for="Chambre.Description" class="form-control" />
+                <span asp-validation-for="Chambre.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Chambre.PrixJournalier" class="control-label"></label>
+                <input asp-for="Chambre.PrixJournalier" class="form-control" />
+                <span asp-validation-for="Chambre.PrixJournalier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Chambre.NomHotel" class="control-label"></label>
+                <input asp-for="Chambre.NomHotel" class="form-control" />
+                <span asp-validation-for="Chambre.NomHotel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
