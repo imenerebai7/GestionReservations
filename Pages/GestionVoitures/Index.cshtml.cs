@@ -1,6 +1,5 @@
 using GestionReservations.Models.Produit;
 using GestionReservations.Services;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace GestionReservations.Pages.GestionVoitures
@@ -15,7 +14,7 @@ namespace GestionReservations.Pages.GestionVoitures
         }
         public void OnGet()
         {
-            Voitures = _serviceVoiture.ConsulterVoitures();
+            Voitures = _serviceVoiture.ObtenirToutesVoitures();
         }
     }
 }

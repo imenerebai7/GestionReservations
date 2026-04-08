@@ -25,6 +25,14 @@ namespace GestionReservations.Pages.GestionVoitures
                 return Page();
             }
 
+            int anneeMax = DateTime.Now.Year;
+            if (Voiture.AnneeFabrication < anneeMax - 10)
+            {
+                ModelState.AddModelError("Voiture.AnneeFabrication",
+                    "La voiture ne doit pas avoir plus de 10 ans.");
+                return Page();
+            }
+
             _voitureService.ModifierVoiture(Voiture);
             return RedirectToPage("/GestionVoitures/Index");
         }

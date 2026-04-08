@@ -2,11 +2,15 @@
 {
     public abstract class Reservation
     {
-        // Propriétés
         public int Id { get; set; }
         public DateTime DateDebut { get; set; }
-        public DateTime DateFin {  get; set; }
-        // Méthodes 
+        public DateTime DateFin { get; set; }
+        private static int compteurId = 0;
+        public Reservation()
+        {
+            compteurId++;
+            Id = compteurId;
+        }
         public int CalculerDureeReservation()
         {
             return (DateFin - DateDebut).Days + 1;

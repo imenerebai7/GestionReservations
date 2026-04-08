@@ -1,2 +1,4 @@
-1;chambre de trois lits;150;Badira
-2;chambre de trois lits;150;Badira1
+1;chambre de trois lits;150
+2;chambre de trois lits;150
+3;chambre de trois lits extra;50
+4;chambre normale;50

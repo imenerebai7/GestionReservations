@@ -4,7 +4,6 @@ namespace GestionReservations.Models.Produit
 {
     public abstract class Produit
     {
-        // Propriétés
         public int Id { get; set; }
         [StringLength(500, ErrorMessage = "Lz description doit au maximum avoir 500 caractères ! ")]
         [Required(ErrorMessage = "La description est obligatoire ! ")]

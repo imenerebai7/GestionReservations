@@ -1,24 +1,17 @@
-﻿using GestionReservations.Models.Produit;
-using GestionReservations.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using GestionReservations.Interfaces;
+using GestionReservations.Models.Produit;
 
 namespace GestionReservations.Services
 {
     public class VoitureService : IGestionVoiture
     {
-        private string cheminFichier = @".\Fichiers\Voitures.txt";
+        private string cheminFichier = "./Fichiers/Voitures.txt";
         private List<Voiture> _voitures = new List<Voiture>();
 
         public VoitureService()
         {
             ChargerDepuisFichier();
         }
-
-        // --- CRUD ---
-
         public void AjouterVoiture(string description, int prix, string marque, int anneefabrication)
         {
             Voiture voiture = new Voiture(description, prix, marque, anneefabrication);
@@ -49,25 +42,21 @@ namespace GestionReservations.Services
             }
         }
 
-        public Voiture ObtenirVoitureParId(int id)
+        public Voiture? ObtenirVoitureParId(int id)
         {
             return _voitures.FirstOrDefault(v => v.Id == id);
         }
 
         public List<Voiture> ObtenirToutesVoitures()
         {
-            return _voitures;
+            return new List<Voiture>(_voitures);
         }
-
-        // --- Gestion fichier ---
-
         private int GetNextId()
         {
             if (!_voitures.Any())
                 return 1;
             return _voitures.Max(v => v.Id) + 1;
         }
-
         private void SauvegarderDansFichier()
         {
             try
@@ -138,11 +127,6 @@ namespace GestionReservations.Services
             {
                 Console.WriteLine($"Erreur lors du chargement : {ex.Message}");
             }
-        }
-        public List<Voiture> ConsulterVoitures()
-        {
-            ChargerDepuisFichier();
-            return _voitures;
         }
     }
 }

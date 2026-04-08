@@ -11,7 +11,6 @@
             <th>Identifiant</th>
             <th>Description</th>
             <th>Prix</th>
-            <th>Nom de l'hôtel</th>
         </tr>
     </thead>
     @foreach (var chambre in Model.Chambres)
@@ -20,7 +19,6 @@
             <td>@chambre.Id</td>
             <td>@chambre.Description</td>
             <td>@chambre.PrixJournalier</td>
-            <td>@chambre.NomHotel</td>
             <td> <a asp-page="./ModifierChambre" asp-route-Id="@chambre.Id">Modifier</a></td>
             <td><a asp-page="./ConsulterChambre" asp-route-Id="@chambre.Id">Consulter</a></td>
             <td><a asp-page="./SupprimerChambre" asp-route-Id="@chambre.Id">Supprimer</a></td>                     

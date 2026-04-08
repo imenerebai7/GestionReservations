@@ -1,5 +1,5 @@
-﻿using GestionReservations.Models.Produit;
-using GestionReservations.Interfaces;
+﻿using GestionReservations.Interfaces;
+using GestionReservations.Models.Produit;
 
 namespace GestionReservations.Services
 {
@@ -7,20 +7,17 @@ namespace GestionReservations.Services
     {
         private string cheminFichier = "Fichiers/Chambres.txt";
         private List<Chambre> _chambres = new List<Chambre>();
-
         public ChambreService()
         {
             ChargerDepuisFichier();
         }
-
-        public void AjouterChambre(string description, int prix, string nomhotel)
+        public void AjouterChambre(string description, int prix)
         {
-            Chambre chambre = new Chambre(description, prix, nomhotel);
+            Chambre chambre = new Chambre(description, prix);
             chambre.Id = GetNextId();
             _chambres.Add(chambre);
             SauvegarderDansFichier();
         }
-
         public void SupprimerChambre(Chambre chambre)
         {
             if (chambre != null)
@@ -29,7 +26,6 @@ namespace GestionReservations.Services
                 SauvegarderDansFichier();
             }
         }
-
         public void ModifierChambre(Chambre chambre)
         {
             var c = _chambres.FirstOrDefault(x => x.Id == chambre.Id);
@@ -37,7 +33,6 @@ namespace GestionReservations.Services
             {
                 c.Description = chambre.Description;
                 c.PrixJournalier = chambre.PrixJournalier;
-                c.NomHotel = chambre.NomHotel;
                 SauvegarderDansFichier();
             }
         }
@@ -46,12 +41,10 @@ namespace GestionReservations.Services
         {
             return _chambres.FirstOrDefault(c => c.Id == id);
         }
-
         public List<Chambre> ObtenirToutesChambres()
         {
             return new List<Chambre>(_chambres);
         }
-
         private int GetNextId()
         {
             if (!_chambres.Any())
@@ -73,7 +66,7 @@ namespace GestionReservations.Services
                 {
                     foreach (var chambre in _chambres)
                     {
-                        sw.WriteLine($"{chambre.Id};{chambre.Description};{chambre.PrixJournalier};{chambre.NomHotel}");
+                        sw.WriteLine($"{chambre.Id};{chambre.Description};{chambre.PrixJournalier}");
                     }
                 }
             }
@@ -103,7 +96,7 @@ namespace GestionReservations.Services
                             continue;
 
                         string[] champs = ligne.Split(';');
-                        if (champs.Length < 4)
+                        if (champs.Length < 3)
                             continue;
 
                         if (!int.TryParse(champs[0], out int id))
@@ -112,12 +105,8 @@ namespace GestionReservations.Services
                             continue;
 
                         string description = champs[1];
-                        string nomHotel = champs[3];
-
-                        Chambre chambre = new Chambre(description, prix, nomHotel)
-                        {
-                            Id = id
-                        };
+                        Chambre chambre = new Chambre(description, prix);
+                        chambre.Id = id;
 
                         _chambres.Add(chambre);
                     }
@@ -127,11 +116,6 @@ namespace GestionReservations.Services
             {
                 Console.WriteLine($"Erreur lors du chargement : {ex.Message}");
             }
-        }
-        public List<Chambre> ConsulterChambres()
-        {
-            ChargerDepuisFichier();
-            return _chambres;
         }
     }
 }

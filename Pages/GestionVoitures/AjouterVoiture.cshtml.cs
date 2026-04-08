@@ -25,8 +25,7 @@ namespace GestionReservations.Pages.GestionVoitures
         {
             if (!ModelState.IsValid)
                 return Page();
-            
-            // Validation anneeFabrication
+
             int anneeMax = DateTime.Now.Year;
             if (Voiture.AnneeFabrication < anneeMax - 10)
             {

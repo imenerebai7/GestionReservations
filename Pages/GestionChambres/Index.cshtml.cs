@@ -1,7 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using GestionReservations.Models.Produit;
 using GestionReservations.Services;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace GestionReservations.Pages.GestionChambres
 {
     public class IndexModel : PageModel
@@ -14,7 +13,7 @@ namespace GestionReservations.Pages.GestionChambres
         }
         public void OnGet()
         {
-            Chambres = _serviceChambre.ConsulterChambres();
+            Chambres = _serviceChambre.ObtenirToutesChambres();
         }
     }
 }
